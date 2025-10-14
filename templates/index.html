@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
+  <title>Binary Translator</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link rel="icon" type="image/png" href="static/img/binary.favicon.png">
+</head>
+<body>
+  <header class="header">
+                <div class="logo">
+                  <a>Binary Translator</a>
+                </div>
+            <nav class="navigation">
+                <ul>
+                    <li><a href="/" class="{% if request.endpoint == 'index' %}active{% endif %}">Decimal or Word to Binary</a></li>
+                    <li><a href="/binary-decimal" class="{% if request.endpoint == 'binary-decimal' %}active{% endif %}">Binary to Decimal or Word</a></li>
+                    <li><a href="/about" class="{% if request.endpoint == 'about' %}active{% endif %}">About us</a></li>
+                    <li><a href="/donate" class="{% if request.endpoint == 'donate' %}active{% endif %}">Donate</a></li>
+                </ul>
+            </nav>
+    </header>
+
+    <aside class="sidebar">
+        <div class = "visit">
+          <p><h4 class = "visit_p">Visit our other sites!!!</h4></p>
+        </div>
+        <div class="banner_img">
+            <img src="{{ url_for('static', filename='img/santabook.jpg') }}" alt="Santabook - the Feeling of Chrismas" id = "img_santa" class = "img_of_banner_santa">
+            <a class ="banner" id = "santabook_button" href = "https://letter-to-santa-95663.web.app/" >SantaBook - the feeling of Chrismas. Write your wishes to Santa now!</a>
+        </div>
+
+        <div class="banner_img">
+            <img src="{{ url_for('static', filename='img/binary.jpg') }}" alt="Binary Translator - go closer to Computer" id = "img_binary" class = "img_of_banner">
+            <a class ="banner_binary" id = "binary_translator" href = "/" >Binary Translator - go closer to Computer and start understand him!</a>
+        </div>
+    </aside>
+
+  <div class = "all">
+    <main>
+      
+      <form class = "all_form">
+        <p class = "Write">Write your Word or Number that you would translate</p>
+        <input type="text" id="inputData" name="data" class = "input_index" maxlength="20" placeholder = "Write your number or word...">
+        <p class = "remember">Remember, you can write only 20 or fewer characters</p>
+        <button type="button" id="sendButton">Convert</button>
+      </form>
+
+      <form class ="answer_form">
+        <p class = "Answer">Your answer:</p>
+        <div id="response"></div>
+      </form>
+
+    </main>
+  </div>
+
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</body>
+</html>

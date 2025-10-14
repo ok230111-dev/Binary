@@ -1,0 +1,446 @@
+/* Загальні стилі */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(120deg, #74ebd5, #acb6e5);
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin-bottom: 5%;
+  }
+  
+  .all {
+    margin-top: 5%;
+    text-align: center;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    height: 90%;
+    width: auto;
+    background: rgba(255, 255, 255, 0.9); /* Білий фон з прозорістю 80% */
+  }
+
+/* Загальні стилі для header */
+.header {
+  position: fixed; /* Фіксуємо заголовок */
+    top: 0; /* Розташовуємо його в самому верху */
+    left: 0; /* Вирівнюємо по лівому краю */
+    width: 100%; /* Заголовок на всю ширину сторінки */
+    display: flex;
+    align-items: center;
+    padding: 15px 15px;
+    justify-content: space-between;
+    background-color: #acb6e5; /* Блакитний фон */
+    color: #fff; /* Білий текст */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Легка тінь */
+    z-index: 1000; /* Забезпечує видимість поверх інших елементів */
+    justify-content: flex-start;
+
+}
+
+/* Логотип */
+.logo a {
+  margin-left: 0;
+  font-size: 1.8rem;
+  font-weight: bold;
+  text-decoration: none;
+  color: #fff; /* Білий текст */
+  font-family: 'Arial', sans-serif;
+}
+
+/* Навігація */
+.navigation ul {
+  list-style: none; /* Прибираємо стандартні маркери списків */
+  margin: 0;
+  padding: 0 10 0 10;
+  display: flex;
+  gap: 10px; /* Проміжки між пунктами меню */
+}
+
+/* Посилання */
+.navigation ul li a {
+  text-decoration: none;
+  color: #fff; /* Білий текст */
+  font-size: 1rem;
+  font-family: 'Arial', sans-serif;
+  transition: color 0.3s, background-color 0.3s; /* Анімація */
+  padding: 8px 12px;
+  border-radius: 5px; /* Округлення кутів */
+}
+
+/* Hover-ефект */
+.navigation ul li a:hover {
+  background-color: #357abd; /* Темніший блакитний */
+  color: #e2f0ff; /* Світлий відтінок */
+}
+
+/* Активне посилання */
+.navigation ul li a.active {
+  background-color: #fff; /* Білий фон */
+  color: #4a90e2; /* Блакитний текст */
+  font-weight: bold;
+  border: 1px solid #357abd; /* Рамка */
+}
+
+/* Адаптивність */
+@media (max-width: 768px) {
+  .navigation ul {
+      flex-direction: column; /* Вертикальне меню */
+      gap: 10px;
+  }
+
+  .header {
+      flex-direction: column;
+      align-items: flex-start; /* Логотип та меню вирівняні вліво */
+  }
+
+  .logo {
+      margin-bottom: 15px;
+  }
+}
+
+  
+  .Write {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: #555;
+  }
+  
+  /* Стилі для кнопок */
+  button {
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: linear-gradient(45deg, #74ebd5, #acb6e5);
+    height: auto;
+    width: 40%;
+  }
+  
+  
+  /* Ефекти при наведенні */
+  button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    opacity: 0.9;
+  }
+  
+  /* Ефекти при натисканні */
+  button:active {
+    transform: scale(1);
+    box-shadow: none;
+  }
+
+.input_index {
+  margin: 4%;
+  height: 40px; /* Замість відсотків використаємо точні значення для кращого вигляду */
+  width: 50%;
+  padding: 0 10px; /* Внутрішні відступи для зручності */
+  font-size: 1rem; /* Розмір тексту */
+  border: 2px solid #87CEFA; /* Колір рамки */
+  border-radius: 8px; /* Згладжені кути */
+  outline: none; /* Прибираємо стандартний фокус браузера */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Легка тінь */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Плавні анімації */
+}
+
+/* Ефект наведення */
+.input_index:hover {
+  border-color: #74c7b8; /* Змінюємо колір рамки */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Посилюємо тінь */
+}
+
+/* Ефект фокусування */
+.input_index:focus {
+  border-color: #6c63ff; /* Темніший колір рамки */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Ще сильніший ефект */
+  background-color: #f0f8ff; /* Світлий фон для вводу */
+}
+
+/* При зміні розмірів екрана */
+@media (max-width: 768px) {
+  .input_index {
+      width: 80%; /* Адаптуємо ширину для мобільних пристроїв */
+  }
+}
+
+.Answer {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  color: #555;
+}
+
+#response {
+  font-size: 18px;
+  color: #555;
+  font-weight: bold;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.remember {
+  font-size: 13px;
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+.answer_form {
+  margin-top: 20%;
+}
+
+
+
+main {
+  padding: 40px 20px;
+}
+
+.about-section {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.about-section h1 {
+  color: #333;
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+.about-section h2 {
+  color: #333;
+  font-size: 24px;
+  margin-top: 20px;
+}
+
+.about-section p {
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+
+.about-section ul, .about-section ol {
+  font-size: 16px;
+  margin-left: 20px;
+  line-height: 1.6;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #333;
+  color: #fff;
+  /*position: fixed;
+  bottom: 0; */
+  width: 100%;
+}
+
+.footer_santa {
+  color: #fff;
+}
+
+footer p {
+  margin: 0;
+}
+
+
+
+/* Ліва колонка (банери) */
+.sidebar {
+  left: 0;
+  position: fixed;
+  width: 25%;
+  background-color: #87CEFA; /* Світлий фон для банерів */
+  padding: 15px;
+  border-right: 1px solid #e2e8f0;
+  box-shadow: 0px 10px 20px 5px rgba(0, 0, 0, 0.5);
+  height: 100vh; /* Висота повністю */
+  overflow-y: auto; /* Прокрутка при надлишковому контенті */
+}
+
+/* Банери */
+.banner {
+  margin-bottom: 10px;
+  background-color: #1e40af; /* Синій фон банера */
+  color: #ffffff; /* Контрастний текст */
+  text-align: center;
+  padding: 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.banner_binary {
+  background-color: #1e40af; /* Синій фон банера */
+  color: #ffffff; /* Контрастний текст */
+  text-align: center;
+  padding: 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20%;
+}
+
+.banner:hover {
+  background-color: #2563eb;
+  transform: scale(1.05);
+  transition: 0.3s ease;
+}
+
+.banner_binary:hover {
+  background-color: #2563eb;
+  transform: scale(1.05);
+  transition: 0.3s ease;
+}
+
+.img_of_banner {
+  width: 100%;
+}
+
+.img_of_banner_santa {
+  width: 100%;
+  margin-top: 7%;
+}
+
+.img_of_banner_santa {
+  cursor: pointer;
+}
+
+.img_of_banner {
+  cursor: pointer;
+}
+
+.visit_p {
+  margin-top: 30%;
+  padding-left: 27%;
+  color: #fff;
+}
+
+.visit {
+  background-color: #acb6e5;
+  padding: 1px;
+  border-radius: 5px;
+}
+
+/* Основний контент */
+.main-content {
+  flex: 1;
+  padding: 20px;
+  display: flex;
+  align-items: center; /* Вирівнювання по вертикалі */
+  justify-content: center; /* Вирівнювання по горизонталі */
+  flex-direction: column; /* Розміщення контенту по центру */
+}
+
+/* ABOUT */
+/* Загальні стилі для секції */
+.about-section {
+  font-family: Arial, sans-serif;
+  background-color: #f4f8fb; /* Світлий фон */
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
+  margin: 50px auto;
+}
+
+/* Заголовки */
+.about-section h1 {
+  font-size: 32px;
+  color: #1f283d;
+  margin-bottom: 20px;
+}
+
+.about-section h2 {
+  font-size: 24px;
+  color: #1f283d;
+  margin-top: 30px;
+}
+
+/* Параграфи */
+.about-section p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Список */
+.about-section ul, .about-section ol {
+  font-size: 16px;
+  margin-left: 20px;
+}
+
+.about-section ul li, .about-section ol li {
+  margin-bottom: 10px;
+  color: #555;
+}
+
+/* Оформлення списку для кращої видимості */
+.about-section ul {
+  list-style-type: square;
+}
+
+.about-section ol {
+  list-style-type: decimal;
+}
+
+
+.favicon_header {
+  margin-right: 0px;
+  margin-bottom: auto;
+  margin-left: 5px;
+  width: 10%;
+  border-radius: 5px; /* Якщо хочете зробити зображення округлим */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Тінь для іконки */
+}
+
+
+/*Donate*/
+#donate-button-container {
+  text-align: center;
+  background: linear-gradient(145deg, #ffffff, #e0e0e0);
+  border-radius: 15px;
+  padding: 7%;
+  max-width: 100%;
+  height: 100%;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+#donate-button-container h3 {
+  color: #6c63ff;
+  font-family: 'Arial', sans-serif;
+  font-size: 20px;
+  margin-bottom: 20px;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+#donate-button {
+  display: inline-block;
+  border: 2px solid #6c63ff;
+  border-radius: 10px;
+  padding: 10px;
+  background: linear-gradient(120deg, #74ebd5, #acb6e5);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#donate-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
