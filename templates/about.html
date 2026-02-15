@@ -1,54 +1,102 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
-  <title>Binary Translator</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-  <link rel="icon" type="image/png" href="static/img/binary.favicon.png">
-</head>
-<body>
-  <header class="header">
-                <div class="logo">
-                    <a>Binary Translator</a>
-                </div>
-            <nav class="navigation">
-                <ul>
-                    <li><a href="/" class="{% if request.endpoint == 'index' %}active{% endif %}">Decimal or Word to Binary</a></li>
-                    <li><a href="/binary-decimal" class="{% if request.endpoint == 'binary-decimal' %}active{% endif %}">Binary to Decimal or Word</a></li>
-                    <li><a href="/about" class="{% if request.endpoint == 'about' %}active{% endif %}">About us</a></li>
-                    <li><a href="/donate" class="{% if request.endpoint == 'donate' %}active{% endif %}">Donate</a></li>
-                </ul>
-            </nav>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8" />
+    <title>Binary Translator</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+    <link rel="icon" type="image/png" href="static/img/binary.favicon.png" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="logo">
+        <a>Binary Translator</a>
+      </div>
+      <nav class="navigation">
+        <ul>
+          <li>
+            <a
+              href="/"
+              class="{% if request.endpoint == 'index' %}active{% endif %}"
+              >Decimal or Word to Binary</a
+            >
+          </li>
+          <li>
+            <a
+              href="/binary-decimal"
+              class="{% if request.endpoint == 'binary-decimal' %}active{% endif %}"
+              >Binary to Decimal or Word</a
+            >
+          </li>
+          <li>
+            <a
+              href="/about"
+              class="{% if request.endpoint == 'about' %}active{% endif %}"
+              >About us</a
+            >
+          </li>
+          <li>
+            <a
+              href="/donate"
+              class="{% if request.endpoint == 'donate' %}active{% endif %}"
+              >Donate</a
+            >
+          </li>
+        </ul>
+      </nav>
+      <!-- Burger -->
+      <div class="burger">
+        <span></span>
+      </div>
     </header>
-  
-  <main>
-    <section class="about-section">
-      <h1>About Binary Translator</h1>
-      <p>Welcome to the Binary Translator! This tool allows you to convert binary code to text or decimal numbers and vice versa. Whether you're working with computer systems, learning binary, or just curious, this translator makes it easy to convert between binary and human-readable formats.</p>
 
-      <h2>Features:</h2>
-      <ul>
-        <li>Convert binary code to text and vice versa</li>
-        <li>Convert binary code to decimal numbers and vice versa</li>
-        <li>Easy-to-use interface with immediate feedback</li>
-      </ul>
+    <main>
+      <section class="about-section">
+        <h1>About Binary Translator</h1>
+        <p>
+          Welcome to the Binary Translator! This tool allows you to convert
+          binary code to text or decimal numbers and vice versa. Whether you're
+          working with computer systems, learning binary, or just curious, this
+          translator makes it easy to convert between binary and human-readable
+          formats.
+        </p>
 
-      <h2>How to Use:</h2>
-      <ol>
-        <li>Enter your binary code or decimal number in the input field</li>
-        <li>Click "Convert" to see the translation to text or decimal</li>
-        <li>If you're converting from binary to text, the tool will display the corresponding characters</li>
-        <li>If you're converting from binary to decimal, you'll get the numeric value</li>
-      </ol>
+        <h2>Features:</h2>
+        <ul>
+          <li>Convert binary code to text and vice versa</li>
+          <li>Convert binary code to decimal numbers and vice versa</li>
+          <li>Easy-to-use interface with immediate feedback</li>
+        </ul>
 
-      <h2>Why Binary?</h2>
-      <p>Binary is the foundational language of computers. Everything in a computer is ultimately represented as binary code, consisting of just two digits: 0 and 1. Whether it's processing data or representing images, binary is the key to understanding how computers operate.</p>
+        <h2>How to Use:</h2>
+        <ol>
+          <li>Enter your binary code or decimal number in the input field</li>
+          <li>Click "Convert" to see the translation to text or decimal</li>
+          <li>
+            If you're converting from binary to text, the tool will display the
+            corresponding characters
+          </li>
+          <li>
+            If you're converting from binary to decimal, you'll get the numeric
+            value
+          </li>
+        </ol>
 
-      <p>Thank you for using the Binary Translator!</p>
-    </section>
-  </main>
+        <h2>Why Binary?</h2>
+        <p>
+          Binary is the foundational language of computers. Everything in a
+          computer is ultimately represented as binary code, consisting of just
+          two digits: 0 and 1. Whether it's processing data or representing
+          images, binary is the key to understanding how computers operate.
+        </p>
 
-  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
-</body>
+        <p>Thank you for using the Binary Translator!</p>
+      </section>
+    </main>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+  </body>
 </html>

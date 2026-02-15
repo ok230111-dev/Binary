@@ -1,10 +1,39 @@
-document.getElementById('sendButton').addEventListener('click', handleConversion);
 
-document.getElementById('inputData').addEventListener('keydown', (event) => {
-  if (event.key === 'Enter') {
-    event.preventDefault(); // Зупиняємо стандартну поведінку (перезавантаження сторінки)
-    handleConversion(); // Викликаємо функцію обробки введених даних
+
+document.addEventListener('DOMContentLoaded', function () {
+
+  // Burger
+  const burger = document.querySelector('.burger');
+  if (burger) {
+    burger.addEventListener('click', function () {
+      this.classList.toggle('active');
+      document.querySelector('.navigation').classList.toggle('open');
+    });
   }
+
+  const burgerCity = document.querySelector('.burger_city');
+  if (burgerCity) {
+    burgerCity.addEventListener('click', function () {
+      this.classList.toggle('active');
+      document.querySelector('.navigation').classList.toggle('open');
+    });
+  }
+
+  const sendButton = document.getElementById('sendButton');
+  if (sendButton) {
+    sendButton.addEventListener('click', handleConversion);
+  }
+
+  const inputData = document.getElementById('inputData');
+  if (inputData) {
+    inputData.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter') {
+        event.preventDefault();
+        handleConversion();
+      }
+    });
+  }
+
 });
 
 // Функція для обробки введених даних
@@ -35,19 +64,5 @@ async function handleConversion() {
     console.error('Error:', error);
     document.getElementById('response').textContent = 'Oh no, error!';
   }
-}
+};
 
-// Обробка кліків на банерах
-const img_santa = document.getElementById('img_santa');
-if (img_santa) {
-  img_santa.addEventListener('click', function () {
-    window.location.href = 'https://letter-to-santa-95663.web.app/';
-  });
-}
-
-const img_binary = document.getElementById('img_binary');
-if (img_binary) {
-  img_binary.addEventListener('click', function () {
-    window.location.href = '/';
-  });
-}
