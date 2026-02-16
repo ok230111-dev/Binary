@@ -32,7 +32,7 @@ body {
   position: fixed; /* Фіксуємо заголовок */
     top: 0; /* Розташовуємо його в самому верху */
     left: 0; /* Вирівнюємо по лівому краю */
-    width: 100%; /* Заголовок на всю ширину сторінки */
+    width: 100%;  /*Заголовок на всю ширину сторінки */
     display: flex;
     align-items: center;
     padding: 15px 15px;
@@ -41,8 +41,7 @@ body {
     color: #fff; /* Білий текст */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Легка тінь */
     z-index: 1000; /* Забезпечує видимість поверх інших елементів */
-    justify-content: flex-start;
-
+    justify-content: flex-start; /* Вирівнюємо логотип та меню вліво */
 }
 
 /* Логотип */
@@ -97,8 +96,8 @@ body {
   }
 
   .header {
-      flex-direction: column;
-      align-items: flex-start; /* Логотип та меню вирівняні вліво */
+      flex-direction: column; 
+      align-items: flex-start; /* Логотип та меню вирівняні вліво /*/
   }
 
   .logo {
@@ -256,92 +255,6 @@ footer p {
   margin: 0;
 }
 
-
-
-/* Ліва колонка (банери) */
-.sidebar {
-  left: 0;
-  position: fixed;
-  width: 25%;
-  background-color: #87CEFA; /* Світлий фон для банерів */
-  padding: 15px;
-  border-right: 1px solid #e2e8f0;
-  box-shadow: 0px 10px 20px 5px rgba(0, 0, 0, 0.5);
-  height: 100vh; /* Висота повністю */
-  overflow-y: auto; /* Прокрутка при надлишковому контенті */
-}
-
-/* Банери */
-.banner {
-  margin-bottom: 10px;
-  background-color: #1e40af; /* Синій фон банера */
-  color: #ffffff; /* Контрастний текст */
-  text-align: center;
-  padding: 20px;
-  border-radius: 5px;
-  font-size: 16px;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-}
-
-.banner_binary {
-  background-color: #1e40af; /* Синій фон банера */
-  color: #ffffff; /* Контрастний текст */
-  text-align: center;
-  padding: 20px;
-  border-radius: 5px;
-  font-size: 16px;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 20%;
-}
-
-.banner:hover {
-  background-color: #2563eb;
-  transform: scale(1.05);
-  transition: 0.3s ease;
-}
-
-.banner_binary:hover {
-  background-color: #2563eb;
-  transform: scale(1.05);
-  transition: 0.3s ease;
-}
-
-.img_of_banner {
-  width: 100%;
-}
-
-.img_of_banner_santa {
-  width: 100%;
-  margin-top: 7%;
-}
-
-.img_of_banner_santa {
-  cursor: pointer;
-}
-
-.img_of_banner {
-  cursor: pointer;
-}
-
-.visit_p {
-  margin-top: 30%;
-  padding-left: 27%;
-  color: #fff;
-}
-
-.visit {
-  background-color: #acb6e5;
-  padding: 1px;
-  border-radius: 5px;
-}
-
 /* Основний контент */
 .main-content {
   flex: 1;
@@ -428,7 +341,7 @@ footer p {
 }
 
 #donate-button-container h3 {
-  color: #6c63ff;
+  color: #000;
   font-family: 'Arial', sans-serif;
   font-size: 20px;
   margin-bottom: 20px;
@@ -436,17 +349,23 @@ footer p {
 }
 
 #donate-button {
-  display: inline-block;
-  border: 2px solid #6c63ff;
+  /* display: inline-block; */
+  border: 2px solid #af40f9;
   border-radius: 10px;
   padding: 10px;
-  background: linear-gradient(120deg, #74ebd5, #acb6e5);
+  background: linear-gradient(120deg, #000, #6c63ff);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 #donate-button:hover {
   transform: scale(1.05);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Розмір зображення в кнопці можна налаштувати за допомогою CSS. Ось приклад, як це зробити: */
+#donate-button img {
+    width: 300px;   /* постав будь-який розмір */
+    height: auto;   /* щоб не спотворювалась */
 }
 
 

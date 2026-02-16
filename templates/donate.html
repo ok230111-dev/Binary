@@ -3,6 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Додано для адаптивності на мобільних пристроях, показує burger (це про meta зверху) -->
     <title>Binary Translator</title>
     <link
       rel="stylesheet"
@@ -47,6 +49,7 @@
           </li>
         </ul>
       </nav>
+
       <!-- Burger -->
       <div class="burger">
         <span></span>
@@ -55,25 +58,27 @@
 
     <main>
       <div id="donate-button-container">
-        <h3>Buy a cup of tea for me and for a better site!</h3>
-        <div id="donate-button">
-          <script
-            src="https://www.paypalobjects.com/donate/sdk/donate-sdk.js"
-            charset="UTF-8"
-          ></script>
-          <script>
-            PayPal.Donation.Button({
-              env: "production",
-              hosted_button_id: "BMCT74WSD3V44",
-              image: {
-                src: "https://www.paypalobjects.com/en_US/DK/i/btn/btn_donateCC_LG.gif",
-                alt: "Donate with PayPal button",
-                title: "Binary Translator",
-              },
-            }).render("#donate-button");
-          </script>
-        </div>
+        <h3>Spend a cup of tea for me and for the better site</h3>
+        <div id="donate-button"></div>
+        <script
+          src="https://www.paypalobjects.com/donate/sdk/donate-sdk.js"
+          charset="UTF-8"
+        ></script>
+        <script>
+          PayPal.Donation.Button({
+            env: "production",
+            hosted_button_id: "KMYNUU3WTZU6Q",
+            image: {
+              src: "https://www.paypalobjects.com/en_US/DK/i/btn/btn_donateCC_LG.gif",
+              alt: "Donate with PayPal button",
+              title: "Spend for the great author",
+            },
+          }).render("#donate-button");
+        </script>
       </div>
+      <!-- акаунт для доната: https://www.paypal.com/donate?hosted_button_id=KMYNUU3WTZU6Qб 
+      точніше кажучи: john.sinna@gmail.com -->
     </main>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
   </body>
 </html>
