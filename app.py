@@ -37,10 +37,10 @@ def process_data():
     if input_data.isdigit():  # Якщо це число
         number = int(input_data)
         binary_number = binary(number)
-        return jsonify({'message': f"{number} in binary is {binary_number}"}), 200
+        return jsonify({'message': f"{number} : {binary_number}"}), 200
     elif input_data.isalpha():  # Якщо це слово
         binary_text = text_to_binary(input_data)
-        return jsonify({'message': f"'{input_data}' in binary is {binary_text}"}), 200
+        return jsonify({'message': f"'{input_data}' : {binary_text}"}), 200
     else:
         return jsonify({'error': 'Invalid input. Please provide a valid number or word.'}), 400
 
@@ -57,10 +57,10 @@ def convert_binary():
         try:
             if ' ' in binary_input:
                 converted_text = binary_to_text(binary_input)
-                return jsonify({'message': f"Binary '{binary_input}' is text: {converted_text}"}), 200
+                return jsonify({'message': f"Binary '{binary_input}' : {converted_text}"}), 200
             else:
                 converted_number = binary_to_decimal(binary_input)
-                return jsonify({'message': f"Binary '{binary_input}' is decimal: {converted_number}"}), 200
+                return jsonify({'message': f"Binary '{binary_input}' : {converted_number}"}), 200
         except ValueError:
             return jsonify({'error': 'Invalid binary code.'}), 400
     else:

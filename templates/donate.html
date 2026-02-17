@@ -4,13 +4,127 @@
     <meta charset="UTF-8" />
     <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- Додано для адаптивності на мобільних пристроях, показує burger (це про meta зверху) -->
-    <title>Binary Translator</title>
+    <title>Binary Translator - Donate</title>
     <link
       rel="stylesheet"
       href="{{ url_for('static', filename='css/style.css') }}"
     />
     <link rel="icon" type="image/png" href="static/img/binary.favicon.png" />
+    <style>
+      .donate-section {
+        background: linear-gradient(145deg, #ffffff, #f5f7fa);
+        border-radius: 20px;
+        padding: 25px;
+        max-width: 350px;
+        margin: 20px auto;
+        box-shadow: 0 10px 30px rgba(0, 48, 135, 0.1);
+        text-align: center;
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      }
+
+      .donate-title {
+        color: #003087;
+        font-size: 24px;
+        margin-bottom: 10px;
+        font-weight: 600;
+      }
+
+      .qr-container {
+        background: white;
+        padding: 15px;
+        border-radius: 15px;
+        margin: 15px 0;
+        border: 2px dashed #003087;
+      }
+
+      .qr-container img {
+        max-width: 250px;
+        width: 100%;
+        height: auto;
+        display: block;
+        margin: 0 auto;
+        cursor: pointer;
+      }
+
+      .paypal-button {
+        background: #003087;
+        color: white;
+        border: none;
+        padding: 12px 35px;
+        border-radius: 50px;
+        font-size: 18px;
+        font-weight: bold;
+        cursor: pointer;
+        transition:
+          transform 0.2s,
+          background 0.2s;
+        text-decoration: none;
+        display: inline-block;
+        margin-top: 15px;
+        width: auto;
+        min-width: 200px;
+      }
+
+      .paypal-button:hover {
+        background: #001f5c;
+        transform: translateY(-2px);
+      }
+
+      .paypal-button:active {
+        transform: translateY(0);
+      }
+
+      .donate-note {
+        color: #666;
+        font-size: 13px;
+        margin-top: 15px;
+        border-top: 1px solid #eee;
+        padding-top: 15px;
+      }
+
+      .thank-you-message {
+        display: none;
+        color: #28a745;
+        font-size: 14px;
+        margin-top: 10px;
+        padding: 10px;
+        background: #e8f5e9;
+        border-radius: 10px;
+        animation: fadeIn 0.5s;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(-10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .loading-spinner {
+        display: none;
+        width: 20px;
+        height: 20px;
+        border: 3px solid #f3f3f3;
+        border-top: 3px solid #003087;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        margin: 10px auto;
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
   </head>
   <body>
     <header class="header">
@@ -57,13 +171,46 @@
     </header>
 
     <main>
+      <div class="donate-section">
+        <div class="donate-title">🙏 Support the project</div>
+
+        <div class="qr-container">
+          <img
+            src="static/img/QR-Code.png"
+            alt="PayPal QR Code"
+            id="qr-code-image"
+            title="Click to open donation page"
+          />
+        </div>
+
+        <!-- Кнопка PayPal -->
+        <button id="donate-button-paypal" class="paypal-button">
+          💙 Donate via PayPal
+        </button>
+
+        <!-- Прихований div для SDK -->
+        <div id="paypal-donate-container" style="display: none"></div>
+
+        <!-- Сповіщення -->
+        <div id="thank-you-message" class="thank-you-message">
+          Thank you for your support! ❤️
+        </div>
+
+        <!-- Лоадер -->
+        <div id="loading-spinner" class="loading-spinner"></div>
+
+        <div class="donate-note">
+          📱 Scan the QR code or click the button above<br />
+          Every donation helps improve this site! 🙏
+        </div>
+      </div>
+
+      <!-- Старий код закоментовано -->
+      <!--
       <div id="donate-button-container">
-        <h3>Spend a cup of tea for me and for the better site</h3>
+        <h3>Spend a cup of tea for me and for the better site with a Donate Button or a QR-Code</h3>
         <div id="donate-button"></div>
-        <script
-          src="https://www.paypalobjects.com/donate/sdk/donate-sdk.js"
-          charset="UTF-8"
-        ></script>
+        <script src="https://www.paypalobjects.com/donate/sdk/donate-sdk.js" charset="UTF-8"></script>
         <script>
           PayPal.Donation.Button({
             env: "production",
@@ -76,9 +223,177 @@
           }).render("#donate-button");
         </script>
       </div>
-      <!-- акаунт для доната: https://www.paypal.com/donate?hosted_button_id=KMYNUU3WTZU6Qб 
-      точніше кажучи: john.sinna@gmail.com -->
+      -->
     </main>
+
+    <!-- Підключаємо PayPal SDK -->
+    <script
+      src="https://www.paypalobjects.com/donate/sdk/donate-sdk.js"
+      charset="UTF-8"
+    ></script>
+
+    <script>
+      // Ваш обліковий запис PayPal
+      const PAYPAL_BUTTON_ID = "KMYNUU3WTZU6Q";
+      const PAYPAL_DONATE_URL =
+        "https://www.paypal.com/donate?hosted_button_id=" + PAYPAL_BUTTON_ID;
+      const PAYPAL_EMAIL = "john.sinna@gmail.com"; // для довідки
+
+      // Функція для відкриття PayPal в новому вікні
+      function openPayPalDonation() {
+        // Показуємо лоадер
+        document.getElementById("loading-spinner").style.display = "block";
+
+        //  Відкриваємо PayPal в новому вікні
+        const width = 600;
+        const height = 700;
+        const left = (window.innerWidth - width) / 2;
+        const top = (window.innerHeight - height) / 2;
+
+        window.open(
+          PAYPAL_DONATE_URL,
+          "paypal-donation",
+          `width=${width},height=${height},top=${top},left=${left},resizable=yes,scrollbars=yes`,
+        );
+
+        // Ховаємо лоадер через секунду
+        setTimeout(() => {
+          document.getElementById("loading-spinner").style.display = "none";
+        }, 1000);
+
+        // Показуємо подяку через 2 секунди
+        setTimeout(() => {
+          showThankYouMessage();
+        }, 2000);
+      }
+
+      // Функція для показу повідомлення подяки
+      function showThankYouMessage() {
+        const message = document.getElementById("thank-you-message");
+        message.style.display = "block";
+
+        // Ховаємо повідомлення через 5 секунд
+        setTimeout(() => {
+          message.style.display = "none";
+        }, 5000);
+      }
+
+      // Функція для ініціалізації оригінальної кнопки PayPal (прихованої)
+      function initPayPalButton() {
+        if (typeof PayPal !== "undefined" && PayPal.Donation) {
+          try {
+            PayPal.Donation.Button({
+              env: "production",
+              hosted_button_id: PAYPAL_BUTTON_ID,
+              style: {
+                label: "donate",
+                size: "responsive",
+                shape: "pill",
+                color: "blue",
+                layout: "vertical",
+              },
+            }).render("#paypal-donate-container");
+
+            console.log("PayPal button initialized successfully");
+          } catch (error) {
+            console.error("Error initializing PayPal button:", error);
+          }
+        } else {
+          console.log("PayPal SDK not loaded yet");
+        }
+      }
+
+      // Додаємо обробники подій після завантаження сторінки
+      document.addEventListener("DOMContentLoaded", function () {
+        // Ініціалізуємо приховану кнопку PayPal
+        initPayPalButton();
+
+        // Обробник для кастомної кнопки
+        const donateButton = document.getElementById("donate-button-paypal");
+        if (donateButton) {
+          donateButton.addEventListener("click", openPayPalDonation);
+        }
+
+        // Обробник для QR-коду
+        const qrImage = document.getElementById("qr-code-image");
+        if (qrImage) {
+          qrImage.addEventListener("click", openPayPalDonation);
+        }
+
+        // Додаємо анімацію появи
+        donateButton.style.opacity = "0";
+        donateButton.style.transform = "translateY(20px)";
+
+        setTimeout(() => {
+          donateButton.style.transition = "all 0.6s";
+          donateButton.style.opacity = "1";
+          donateButton.style.transform = "translateY(0)";
+        }, 200);
+      });
+
+      // Додаємо підтримку клавіатури для доступності
+      document.addEventListener("keydown", function (event) {
+        if (event.key === "d" || event.key === "D") {
+          // Alt+D для донату
+          if (event.altKey) {
+            openPayPalDonation();
+          }
+        }
+      });
+
+      // Функція для відстеження успішного донату
+      window.addEventListener("message", function (event) {
+        // Перевіряємо, чи повідомлення від PayPal
+        if (event.origin.includes("paypal.com")) {
+          if (event.data && event.data.type === "donation_complete") {
+            showThankYouMessage();
+
+            // Можна відправити аналітику
+            if (typeof gtag !== "undefined") {
+              gtag("event", "donation", {
+                event_category: "engagement",
+                event_label: "paypal_donation",
+              });
+            }
+          }
+        }
+      });
+
+      // Обробка помилок
+      window.onerror = function (msg, url, lineNo, columnNo, error) {
+        console.error("Error: ", msg);
+        return false;
+      };
+    </script>
+
+    <!-- Додатковий фолбек для старого браузера -->
+    <noscript>
+      <div
+        style="
+          text-align: center;
+          padding: 20px;
+          background: #ffebee;
+          color: #c62828;
+          border-radius: 10px;
+          margin: 10px;
+        "
+      >
+        JavaScript is disabled. Please enable JavaScript to donate via PayPal.
+        <br />
+        <a
+          href="https://www.paypal.com/donate?hosted_button_id=KMYNUU3WTZU6Q"
+          style="color: #003087"
+          >Click here to donate directly</a
+        >
+      </div>
+    </noscript>
+
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
   </body>
 </html>
+
+<!-- Інформація про донати:
+     - PayPal акаунт: john.sinna@gmail.com
+     - Пряме посилання: https://www.paypal.com/donate?hosted_button_id=KMYNUU3WTZU6Q
+     - Hosted button ID: KMYNUU3WTZU6Q
+-->
