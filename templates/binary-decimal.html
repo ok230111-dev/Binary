@@ -56,25 +56,27 @@
     </header>
 
     <div class="all">
-      <form class="all_form" id="all_form">
-        <p class="Write">
-          Write your binary code that you would like to translate
-        </p>
-        <input
-          class="input_index"
-          type="text"
-          id="binaryInput"
-          name="binary"
-          placeholder="Write your code.."
-          required
-        />
-        <button type="submit" id="sendButton">Convert</button>
-      </form>
+      <main>
+        <form class="all_form" id="all_form">
+          <p class="Write">
+            Write your binary code that you would like to translate
+          </p>
+          <input
+            class="input_index"
+            type="text"
+            id="binaryInput"
+            name="binary"
+            placeholder="Write your code.."
+            required
+          />
+          <button type="submit" id="sendButton">Convert</button>
+        </form>
 
-      <form class="answer_form" id="answer_form">
-        <p class="Answer">Your answer:</p>
-        <div id="response"></div>
-      </form>
+        <form class="answer_form" id="answer_form">
+          <p class="Answer">Your answer:</p>
+          <div id="response"></div>
+        </form>
+      </main>
     </div>
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
     <script>

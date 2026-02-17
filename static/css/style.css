@@ -10,21 +10,22 @@ body {
     background: linear-gradient(120deg, #74ebd5, #acb6e5);
     color: #333;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: center; /* вирівнює по горизонталі */
+    align-items: center;   /* вирівнює по вертикалі */
     height: 100vh;
     margin-bottom: 5%;
+    min-height: 100vh;         /* на всю висоту екрану */
   }
   
   .all {
     margin-top: 5%;
-    text-align: center;
     padding: 20px;
     border-radius: 15px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
     height: 90%;
     width: auto;
     background: rgba(255, 255, 255, 0.9); /* Білий фон з прозорістю 80% */
+    text-align: center;        /* центрує текст всередині */
   }
 
 /* Загальні стилі для header */
@@ -114,7 +115,7 @@ body {
   
   /* Стилі для кнопок */
   button {
-    margin: 10px;
+    margin: 10px auto;
     padding: 10px 20px;
     font-size: 1rem;
     font-weight: bold;
@@ -142,7 +143,7 @@ body {
   }
 
 .input_index {
-  margin: 4%;
+  /* margin: 4%; */
   height: 40px; /* Замість відсотків використаємо точні значення для кращого вигляду */
   width: 50%;
   padding: 0 10px; /* Внутрішні відступи для зручності */
@@ -152,6 +153,10 @@ body {
   outline: none; /* Прибираємо стандартний фокус браузера */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Легка тінь */
   transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Плавні анімації */
+  max-width: 400px;
+  display: block;        /* щоб кожен елемент був на новому рядку */
+  margin: 10px auto;     /* автоматичні відступи з боків */
+  box-sizing: border-box;
 }
 
 /* Ефект наведення */
