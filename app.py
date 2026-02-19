@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template, jsonify
+from flask import Flask, request, render_template, jsonify, send_from_directory
 
 app = Flask(__name__)
 
@@ -81,6 +81,10 @@ def about():
 @app.route('/donate', endpoint='donate')
 def about():
     return render_template('donate.html')
+
+@app.route('/moneytag.js')
+def moneytag():
+    return send_from_directory('.', 'moneytag.js')
 
 if __name__ == '__main__':
     app.run(debug=True)
