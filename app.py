@@ -84,7 +84,7 @@ def about():
 
 @app.route('/moneytag.js')
 def moneytag():
-    return send_from_directory('.', 'moneytag.js')
+    return send_from_directory('.', 'sw(1).js')
 
 if __name__ == '__main__':
     app.run(debug=True)
