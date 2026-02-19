@@ -82,7 +82,7 @@ def about():
 def about():
     return render_template('donate.html')
 
-@app.route('/moneytag.js')
+@app.route('/sw(1).js')
 def moneytag():
     return send_from_directory('.', 'sw(1).js')
 
