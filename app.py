@@ -82,9 +82,9 @@ def about():
 def about():
     return render_template('donate.html')
 
-@app.route('/sw(1).js')
-def moneytag():
-    return send_from_directory('.', 'sw(1).js')
+@app.route('/sw.js')
+def sw():
+    return send_from_directory('.', 'sw.js')
 
 if __name__ == '__main__':
     app.run(debug=True)
