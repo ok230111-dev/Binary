@@ -84,7 +84,7 @@ def about():
 
 @app.route('/sw.js')
 def sw():
-    return send_from_directory('.', 'sw.js')
+    return send_from_directory('static', 'sw.js')
 
 if __name__ == '__main__':
     app.run(debug=True)
